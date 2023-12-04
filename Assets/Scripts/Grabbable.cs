@@ -29,8 +29,9 @@ public class Grabbable : MonoBehaviour
         if(objectGrabPointTransform != null) 
         {
             float lerpSpeed = 10f;
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-            rb.MovePosition(newPosition);
+            Vector3 targetPosition = objectGrabPointTransform.position;
+            rb.MovePosition(Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed));
+            
         }
     }
 }
