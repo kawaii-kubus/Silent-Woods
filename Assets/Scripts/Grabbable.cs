@@ -15,12 +15,15 @@ public class Grabbable : MonoBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         rb.useGravity = false;
+        rb.isKinematic = true;
+
     }
 
     public void Drop()
     {
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
+        rb.isKinematic = false;
         
     }
 
