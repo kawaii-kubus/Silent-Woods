@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Components")]
     public CharacterController controller;
 
+    [Header("Ground")]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    bool isGrounded;
 
+
+    [Header("Speed")]
     public float speedWalking = 12f;
-    public float speedRunning = 100f;
+    public float speedRunning = 20f;
+    Vector3 velocity;
+
+    [Header("Jumping")]
     public float gravity = -9.81f;
     public float jumpHigh = 3f;
 
-    bool isGrounded;
-    Vector3 velocity;
     void Update()
     {
-        //Cheking if IsGrounded 
+        //Checking if IsGrounded 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //Checing if its not in air
-        if(isGrounded && velocity.y < 0)
+        Debug.Log(isGrounded);
+        //If is in the air add velocity to faster down
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+
         }
 
         //Inputs x,y
@@ -35,16 +43,28 @@ public class PlayerMovement : MonoBehaviour
         //Walking
         controller.Move(move * speedWalking * Time.deltaTime);
         //Running
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             controller.Move(move * speedRunning * Time.deltaTime);
 
         }
-        //Jumping
+        //Jumping from math formula
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHigh * -2f * gravity);
         }
+        //Crouching
+        if (Input.GetKey(KeyCode.C)) 
+        {
+            Vector3 newScale = new Vector3(1f, 0.5f, 1f);
+            controller.transform.localScale = newScale;
+        }
+        else
+        {
+            Vector3 baseScale = new Vector3(1f, 1f, 1f);
+            controller.transform.localScale = baseScale;
+        }
+
         //Gravity 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
