@@ -15,34 +15,42 @@ public class Raycast : MonoBehaviour
 
     [SerializeField] private Image crosshair;
 
+    [SerializeField] private GameObject player;
+
     private void Start()
     {
         _camera = GetComponent<Camera>();
     }
     void Update()
     {
+        //Raycast from middle of screen to object with NotesController script
         if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), transform.forward, out RaycastHit hit, Raycastdistance))
         {
             var readableItem = hit.collider.GetComponent<NotesController>();
+
             if (readableItem != null)
             {
                 _notesController = readableItem;
                 HighlightCrosshair(true);
             }
-            else
-            {
-                ClearNote();
-            }
-        }      
 
-
-        if (_notesController != null)
-        {
-            if (Input.GetKeyDown(interactkey))
+            if (readableItem != null)
             {
-                _notesController.ShowNote();
+                if (Input.GetKeyDown(interactkey))
+                {
+                    _notesController.ShowNote();
+                    ClearNote();
+                }
+
             }
+
         }
+        else
+        {
+            ClearNote();
+        }
+
+
 
     }
 
@@ -65,5 +73,6 @@ public class Raycast : MonoBehaviour
         {
             crosshair.color = Color.white;
         }
+
     }
 }

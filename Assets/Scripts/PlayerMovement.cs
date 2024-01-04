@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Checking if IsGrounded 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Debug.Log(isGrounded);
+
         //If is in the air add velocity to faster down
         if (isGrounded && velocity.y < 0)
         {
@@ -71,5 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
     }
+
+
 }
