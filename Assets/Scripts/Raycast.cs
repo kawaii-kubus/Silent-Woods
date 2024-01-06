@@ -23,8 +23,7 @@ public class Raycast : MonoBehaviour
     }
     void Update()
     {
-        //Raycast from middle of screen to object with NotesController script
-        if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), transform.forward, out RaycastHit hit, Raycastdistance))
+        if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(1f, 1f)), transform.forward, out RaycastHit hit, Raycastdistance))
         {
             var readableItem = hit.collider.GetComponent<NotesController>();
 
@@ -43,6 +42,18 @@ public class Raycast : MonoBehaviour
                 }
 
             }
+
+            //if (rotateShelfDoor != null)
+            //{
+            //    HighlightCrosshair(true);
+            //    _doorController = rotateShelfDoor;
+            //    _doorController.MoveDoors();
+
+            //}
+            //else
+            //{
+            //    HighlightCrosshair(false);
+            //}
 
         }
         else
@@ -65,6 +76,7 @@ public class Raycast : MonoBehaviour
 
     void HighlightCrosshair(bool on)
     {
+
         if (on)
         {
             crosshair.color = Color.red;
