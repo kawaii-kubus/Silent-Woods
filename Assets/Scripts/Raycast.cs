@@ -17,6 +17,8 @@ public class Raycast : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
+    [SerializeField] private ShelfDoorsController _shelfDoorsController;
+
     private void Start()
     {
         _camera = GetComponent<Camera>();
