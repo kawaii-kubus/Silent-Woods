@@ -11,8 +11,14 @@ public class LockedDoors : MonoBehaviour
     [SerializeField] private float raycastDistance = 5f;
     [SerializeField] private GameObject _textPanel;
     [SerializeField] private Camera _camera;
+    [SerializeField] private AudioClip audioClip;
+    private AudioSource audioSrc;
     private RaycastHit playerHit;
 
+    private void Start()
+    {
+        audioSrc = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -22,10 +28,13 @@ public class LockedDoors : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    audioSrc.clip = audioClip;
+                    audioSrc.Play();
                     _textPanel.SetActive(true);
                     StartCoroutine(DisableTextAfterSeconds());
 
-                    
+
+
                 }
             }
         }
@@ -35,6 +44,8 @@ public class LockedDoors : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         _textPanel.SetActive(false);
+
+
 
     }
 }

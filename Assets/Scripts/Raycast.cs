@@ -45,17 +45,7 @@ public class Raycast : MonoBehaviour
 
             }
 
-            //if (rotateShelfDoor != null)
-            //{
-            //    HighlightCrosshair(true);
-            //    _doorController = rotateShelfDoor;
-            //    _doorController.MoveDoors();
-
-            //}
-            //else
-            //{
-            //    HighlightCrosshair(false);
-            //}
+       
 
         }
         else
