@@ -10,7 +10,7 @@ public class Exit : MonoBehaviour
     {
         if(Input.GetKey("escape"))
         {
-            SceneManager.LoadScene(0);
+            Application.Quit();
         }
     }
 }

@@ -5,29 +5,32 @@ using UnityEngine.UI;
 
 public class Raycast : MonoBehaviour
 {
-    public float Raycastdistance = 5f;
-
-    private Camera _camera;
-
     private KeyCode interactkey = KeyCode.E;
-
     private NotesController _notesController;
-
+    [SerializeField] private LayerMask layerMasInteract;
+    [SerializeField] private string excluseLayerName = null;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private float Raycastdistance = 5f;
     [SerializeField] private Image crosshair;
 
-    [SerializeField] private GameObject player;
+    private KeyItemController raycastedObject;
+    [SerializeField] private KeyCode openDoorKey = KeyCode.Mouse0;
+    private bool doOnce;
 
-    [SerializeField] private ShelfDoorsController _shelfDoorsController;
+    private string interactableTag = "InteractiveObject";
 
-    private void Start()
-    {
-        _camera = GetComponent<Camera>();
-    }
+
     void Update()
     {
-        if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(1f, 1f)), transform.forward, out RaycastHit hit, Raycastdistance))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit hit, Raycastdistance))
         {
             var readableItem = hit.collider.GetComponent<NotesController>();
+            var AnimationController = hit.collider.GetComponent<AnimationController>();
+            if (AnimationController)
+            {
+                AnimationController.Open();
+                
+            }
 
             if (readableItem != null)
             {
@@ -45,16 +48,11 @@ public class Raycast : MonoBehaviour
 
             }
 
-       
-
         }
         else
         {
             ClearNote();
         }
-
-
-
     }
 
     void ClearNote()
@@ -77,6 +75,5 @@ public class Raycast : MonoBehaviour
         {
             crosshair.color = Color.white;
         }
-
     }
 }
