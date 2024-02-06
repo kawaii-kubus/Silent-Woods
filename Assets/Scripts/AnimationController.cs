@@ -11,7 +11,6 @@ public class AnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
     public void Open()
     {
         animator.Play(0);
