@@ -24,7 +24,7 @@ It's my first long term project, i had some fun with it.
 ### Assets
 * Buildings and props https://assetstore.unity.com/publishers/4475
 * Ambient https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651
-
+* Car https://assetstore.unity.com/packages/3d/vehicles/land/80-s-sport-car-1-69324
 ### Screenshots
 
 ![Image](https://github.com/kawaii-kubus/Samaran/blob/92029f4e8e3a93c7a333e2d75eff052ea7450f87/1.PNG)
