@@ -1,10 +1,11 @@
 # Silent Woods
 
-##Technical
-
 Silent Woods it's simple preview of single player horror.
 To be honest, I mostly focused on lvl design than real gameplay, but it have some spooky background.
 It's my first long term project, i had some fun with it.
+## Technical
+
+
 
 ## Systems
 * movement
