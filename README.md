@@ -7,15 +7,15 @@ To be honest, I mostly focused on lvl design than real gameplay, but it have som
 It's my first long term project, i had some fun with it.
 
 ## Systems
-movement
-Animations - like chair in the front of church
-Ambient music in the background
-Leafs particle
-VFX - wind and leafs sounds
-Fog and lighting
-Inspecting notes
-Flashlight
-Objectives
+* movement
+* Animations - like chair in the front of church
+* Ambient music in the background
+* Leafs particle
+* VFX - wind and leafs sounds
+* Fog and lighting
+* Inspecting notes
+* Flashlight
+* Objectives
 
 
 
